@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    </head>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        let counter = 0;
+        function App(){ 
+            const [counter, setCounter] = React.useState(0); //State 가 변경되면 해당 컴포넌트만 리렌더링이 일어남
+            const onClick = ()=>{
+               setCounter(counter+1); //값 변경하고 리렌더링
+            };
+            return (
+            <div>
+                <h3> Total clicks : {counter} </h3>
+                <button onClick = {onClick}>click me</button>
+            </div>
+            );
+        }
+        ReactDOM.render(<App />, root); 
+    </script>
+
+</html>

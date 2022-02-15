@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+    </body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        let counter = 0;
+        function count(){
+            counter++;
+            reRender();//counter가 없데이트 될 때마다 UI도 같이 없데이트(다같이 되는거 아니고 바뀌는 {counter} 부분만 업데이트됨)
+        }
+        function reRender(){
+            ReactDOM.render(<Container />, root); 
+        }
+        const Container = ()=> (
+            <div>
+                <h3> Total clicks : {counter} </h3>
+                <button onClick={count}>click me</button>
+            </div>
+        );  
+        reRender(); //ui update X
+    </script>
+
+</html>
