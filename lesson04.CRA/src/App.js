@@ -3,29 +3,31 @@ import styled from "./App.module.css";
 import {useState} from "react";
 import { useEffect } from "react";
 
-function App() {
-  const[counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = ()=>setValue((prev) => prev + 1);
-  const onChange = (event) => setKeyword(event.target.value);
-  // 코드의 특정한 부분이 변했을 때, 원하는 코드들을 실행할 수 있는 방법
-  useEffect(() =>{
-    console.log(" change counter");
-  },[counter]); //when counter changes, function
+function Hello(){
+  // function effectFn(){
+  //   console.log("create");
+  //   return destroyedFn;
+  // }
+  // function destroyedFn(){
+  //   console.log("bye");
+  // }
+  // useEffect(effectFn,[]);
   useEffect(()=>{
-    if(keyword!==""&&keyword.length>5){
-      console.log("seacrh for",keyword);
-    }
-  },[keyword]); //keyword가 바뀔때마다 keyword consoole 출력
-  return (
-    <div className="App">
-      <input 
-        value={keyword} 
-        onChange={onChange} 
-        type="text" 
-        placeholder="Search here..."/>
-      <h1 className={styled.title}>{counter}</h1>
-      <button onClick = {onClick} text="Button" />
+    console.log("hi");
+    return ()=>console.log("bye");
+  },[]);
+   //when component destroyed, return this function
+  return <h1>hello</h1>;
+}
+
+function App() {
+  const [showing, setShowing] = useState(false);
+  const onClick = () =>setShowing((prev) => !prev);
+  return(
+    <div>
+      {showing? <Hello/> : null}
+      {/*JSX에서 JS쑬 때 중괄호 열고함~ 기억해~ */}
+      <button onClick={onClick}>{showing ? "hide" : "showing"}</button> 
     </div>
   );
 }
