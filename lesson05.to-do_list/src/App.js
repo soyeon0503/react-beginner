@@ -19,7 +19,7 @@ function App() {
       <h1>My To-Do List {toDos.length}</h1>
       <form>
         <input 
-          onChange = {onChange} 
+          onChange = {onChange}  
           value = {toDo} 
           type = "text" 
           placeholder="write your to do..."
