@@ -1,10 +1,15 @@
-import './App.css';
-
+//router render
+import {BrowserRouter as Router,Routes,Route, link }from 'react-router-dom';
+import Home from './routes/Home';
+import Detail from './routes/Detail';
 function App() {
   return (
-    <div className="App">
-      <h2>hi</h2>
-    </div>
+  <Router>
+    <Routes>
+      <Route path='/' element={<Home />}/>
+      <Route path='/movie/:id' element={<Detail />}/>
+    </Routes>
+  </Router>
   );
 }
 
