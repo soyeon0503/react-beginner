@@ -15,7 +15,7 @@ function Home() {
     setLoading(false);
     };
     useEffect(() => {
-    getMovies();
+        getMovies();
     }, []);
     return (
     // state로 받은 data로 표현
