@@ -1,7 +1,7 @@
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/Expenses/NewExpense";
 
-function App() {
+const App =  () => {
   const expenses = [
     {
         id : 'e1',
@@ -28,12 +28,16 @@ function App() {
         date : new Date(2022,1,25),
     }
   ];
+  const addExpense = expenses => {
+      console.log('in app.js');
+      console.log(expenses);
+  };
   return (
     <div>
       {/* 이렇게 개발자는 맞춤 태그를 개발할 수 있다. 
           대문자로 시작해야되며 위의 import에 정의된 이름을 사용한다.
      */}
-    <NewExpense />
+    <NewExpense onAddExpeseHandler={addExpense} />
     <Expenses item={expenses}/>
 
     </div>

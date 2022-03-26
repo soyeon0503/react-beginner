@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './ExpenseForm.css';
 import './NewExpense.css'
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     // 컴포넌트는 각각 여러개 state를 가질 수 있음
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmout] = useState();
@@ -46,7 +46,9 @@ const ExpenseForm = () => {
             date : new Date(enteredDate),
         };
 
-        console.log(expenseData);
+        // onSaveExpneseData를 ExpenseForm에서 불러올 수 있고
+        //데이터를 매개변수로 보낼 수 있다.
+        props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
         setEnteredAmout('');
         setEnteredDate('');
