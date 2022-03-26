@@ -1,4 +1,4 @@
-import Card from './Card';
+import Card from '../UI/Card';
 import ExpenseDate from './ExpenseDate';
 import './ExpenseItem.css';
 import React,{useState} from'react';
@@ -13,7 +13,12 @@ const ExpenseItem = (props) => {
     //     title = 'update!';
     // };
     //useStae는 기본 상태값 변수가 변화하면서 컴포넌트 함수를 다시 불러와서 하는 거임
-    let [title,setTitle] = useState(props.title);
+    // 모든 Item은 개별 상태를 받고 컴포넌트마다 상태는 분리되어 있음을 명심하자
+    //=> React는 컴포넌트 기반이다
+    // 그리고 왜 const를 사용하는 걸까?
+    //우리는 함수(useState)를 불러오는 거지 title = 'value'라고 값을 할당하는 것이 아니다
+
+    const [title,setTitle] = useState(props.title);
     const clickHandler = ()=>{
         setTitle('change~!');
     }
