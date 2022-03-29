@@ -4,7 +4,7 @@ import './NewExpense.css'
 const ExpenseForm = (props) => {
     // 컴포넌트는 각각 여러개 state를 가질 수 있음
     const [enteredTitle, setEnteredTitle] = useState('');
-    const [enteredAmount, setEnteredAmout] = useState();
+    const [enteredAmount, setEnteredAmount] = useState();
     const [enteredDate, setEnteredDate] = useState('');
 
     //하나의 상태로 관리할 수도 있음
@@ -31,12 +31,12 @@ const ExpenseForm = (props) => {
         // });
     };
     const amountChangeHandler = (event) =>{
-        setEnteredAmout(event.target.value);
+        setEnteredAmount(event.target.value);
     }
     const dateChangeHandler = (event) => {
         setEnteredDate(event.target.value);
     }
-    const submitHandler = (event) =>{
+    const submitHandler = (event) => {
         // 요청을 보내지 않으니 페이지가 다시 불러와질 것도 없음
         event.preventDefault();
         
@@ -50,7 +50,7 @@ const ExpenseForm = (props) => {
         //데이터를 매개변수로 보낼 수 있다.
         props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
-        setEnteredAmout('');
+        setEnteredAmount('');
         setEnteredDate('');
     };
     // onSumbit은 제출하면 페이지를 새로 불어옴
@@ -64,7 +64,7 @@ const ExpenseForm = (props) => {
                 </div>
                 <div className="new-expense__control">
                     <label>Amount</label>
-                    <input type='number' value={enteredAmount} min='0.00' step='0.0' onChange={amountChangeHandler}/>
+                    <input type='number' value={enteredAmount} min='0.00' step='0.1' onChange={amountChangeHandler}/>
                 </div>
                 <div className="new-expense__control">
                     <label>Date</label>

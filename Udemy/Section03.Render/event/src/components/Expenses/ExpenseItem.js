@@ -17,22 +17,15 @@ const ExpenseItem = (props) => {
     //=> React는 컴포넌트 기반이다
     // 그리고 왜 const를 사용하는 걸까?
     //우리는 함수(useState)를 불러오는 거지 title = 'value'라고 값을 할당하는 것이 아니다
-
-    const [title,setTitle] = useState(props.title);
-    const clickHandler = ()=>{
-        setTitle('change~!');
-    }
-
     return(
         <Card className='expense-item'>
             <ExpenseDate date={props.date}/>
             <div className='expense-item__description'>
-                <h2>{title}</h2>
+                <h2>{props.title}</h2>
                 <div className='expense-item__price'>
                     ${props.amount}
                 </div>
             </div>
-            <button onClick={clickHandler}>Change Title</button>
         </Card>
     );
 }

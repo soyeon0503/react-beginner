@@ -3,6 +3,7 @@ import ExpenseFilter from "./ExpenseFilter";
 import ExpenseItem  from "./ExpenseItem";
 import './Expenses.css'
 import {useState} from 'react';
+
 function Expenses(props){
     const [filteredYear, setFilterYear] = useState('2020');
 
@@ -10,20 +11,29 @@ function Expenses(props){
         setFilterYear(selectedYear);
     };
     return(
-        <Card className='expenses'>
-            <ExpenseFilter 
-                selected={filteredYear} 
-                onChangeFilter={filterChangeHandler}
-            />
-            {props.items.map((expense) => (
-                <ExpenseItem 
-                    title={expense.title}
-                    amout={expense.amount}
-                    date ={expense.date} 
+        <div>
+            <Card className='expenses'>
+                <ExpenseFilter 
+                    selected={filteredYear} 
+                    onChangeFilter={filterChangeHandler}
                 />
-            ))}
-        </Card>
-    
+                {/* 두번째 인자로 index 넣는짓 하지마라 버그날 수도 있음*/}
+                {props.items.map((expense) => (
+                    (filteredYear == expense.date.getFullYear()?(
+                        <ExpenseItem 
+                        // key는 리액트 개별아이템을 식별할 수 있도록 도와줌
+                            key={expense.id}
+                            title={expense.title}
+                            amount={expense.amount}
+                            date ={expense.date} 
+                        />
+                    ):console.log(expense.date.getFullYear())
+                    )
+                    
+                ))}
+            </Card>
+        </div>
+
     );
 }
 
