@@ -41,9 +41,9 @@ const ExpenseForm = (props) => {
         event.preventDefault();
         
         const expenseData = {
-            title : enteredTitle,
-            amount : enteredAmount,
-            date : new Date(enteredDate),
+            title: enteredTitle,
+            amount: +enteredAmount,
+            date: new Date(enteredDate),
         };
 
         // onSaveExpneseData를 ExpenseForm에서 불러올 수 있고
