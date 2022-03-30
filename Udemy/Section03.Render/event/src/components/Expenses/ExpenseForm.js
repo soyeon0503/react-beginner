@@ -6,7 +6,6 @@ const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState();
     const [enteredDate, setEnteredDate] = useState('');
-    const [state,setState] = useState('true');
 
     //하나의 상태로 관리할 수도 있음
     // const [userInput, setUserInput]  = useState({
@@ -56,38 +55,29 @@ const ExpenseForm = (props) => {
     };
     // onSumbit은 제출하면 페이지를 새로 불어옴
 
-    const addNewExpenseHandler = () => {
-        setState(!state);
-    }   
-    
+
     return(
-        <div>
-            {state?(
-                <button style={{display: {state}? 'block': 'hidden'}} className='new-expense ' onClick={addNewExpenseHandler}> ADD NEW EXPENSE </button>
-            ):(
-                <form onSubmit={submitHandler} style={{display: {state}? 'hidden': 'block'}}>
-                    <div className="new-expense__controls">
-                        <div className="new-expense__control">
-                            <label>Title</label>
-                            {/* event가 발생하면 props로 pass 함 */}
-                            <input type='text' value={enteredTitle} onChange={titleChangeHandler}/>
-                        </div>
-                        <div className="new-expense__control">
-                            <label>Amount</label>
-                            <input type='number' value={enteredAmount} min='0.00' step='0.1' onChange={amountChangeHandler}/>
-                        </div>
-                        <div className="new-expense__control">
-                            <label>Date</label>
-                            <input type='date' value={enteredDate}  min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler}/>
-                        </div>
-                    </div>
-                    <div className="new-expense__actions">
-                        <button className='new-expense'  onClick={addNewExpenseHandler}>CANCLE</button>
-                        <button className='new-expense' type="submit">Add expense</button>
-                    </div>
-                </form>)
-            }
-        </div>
+        <form onSubmit={submitHandler}>
+            <div className="new-expense__controls">
+                <div className="new-expense__control">
+                    <label>Title</label>
+                    {/* event가 발생하면 props로 pass 함 */}
+                    <input type='text' value={enteredTitle} onChange={titleChangeHandler}/>
+                </div>
+                <div className="new-expense__control">
+                    <label>Amount</label>
+                    <input type='number' value={enteredAmount} min='0.00' step='0.1' onChange={amountChangeHandler}/>
+                </div>
+                <div className="new-expense__control">
+                    <label>Date</label>
+                    <input type='date' value={enteredDate}  min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler}/>
+                </div>
+            </div>
+            <div className="new-expense__actions">
+                <button className='new-expense'  onClick={props.onCancle}>CANCLE</button>
+                <button className='new-expense' type="submit">Add expense</button>
+            </div>
+        </form>
 
     );
 };
